@@ -1,0 +1,55 @@
+---
+title: "ADM 2303 - Assignment 1"
+author: "Renad Gharz"
+output: pdf_document
+---
+
+# 1. Next Generation Aircraft
+<strong>In order to reduce carbon emissions from commercial passenger aircraft,  research is underway on two different methods of powering them: electric motors or hydrogen turbines. The electricity and hydrogen would be obtained from renewable power sources such as wind and solar. The hydrogen would be produced by electrolysis of water which is currently only 80% efficient. Electric aircraft can use multiple motors driving propellers along the length of the wings increasing the airflow over the wing, thus reducing the size and cost of the wing and improving efficiency. Hydrogen turbines can be integrated into the airframe, also improving efficiency and reducing capital cost.<br>
+
+A technology forecasting company needs to advise investors as to the probability that new designs of aircraft will become available. It analyses future scenarios as follows. With 80% efficient electrolysis (which is already available today), the probability of a hydrogen aircraft being economical in 5 years is 0.6. The efficiency of electrolysis can be improved to 90% within 5 years with a probability of 0.7. With 90% efficient electrolysis, the probability of a hydrogen aircraft being economical in 5 years is 0.8.</strong>
+
+## 1.1
+>Which of the probabilities in the above description is/are conditional?
+
+## 1.2
+>Draw a probability tree for the situation above (showing probabilities of electrolysis efficiency and an economical hydrogen aircraft in 5 years).
+
+## 1.3
+>What is the probability that an economical hydrogen aircraft will be developed in 5 years? If an economical hydrogen aircraft is developed in 5 years, research into electric aircraft will be cut back so that the probability of an economical electric aircraft being developed in 7 years is 0.5. If an economical hydrogen aircraft is not developed in 5 years, the probability of an economical electric aircraft being developed in 7 years is 0.9. 
+
+## 1.4
+>Extend the probability tree from 1.3 to also include probabilities of an economical electric aircraft in 7 years.
+
+## 1.5
+>What is the probability that an economical electric aircraft will be developed in 7 years?
+
+# 2. Bank Charges
+<strong>For one type of bank account, a bank allows 4 transactions per month for free and charges $1 per transaction for the 5th and subsequent transactions. (E.g. if I make 7 transactions I will pay (7-4)*$1 = $3.) The number of transactions I make each month has a mean of 4 and a variance of 2.4 and follows a Binomial distribution. I need to estimate how much I expect to pay each month in bank charges.</strong>
+
+## 2.1
+>Calculate the probability, p, and the number, n, that define the Binomial distribution of the number of transactions each month. [Hint: Use the formulas for the mean and variance of the Binomial Distribution. Mean = np, Variance = np(1-p) = Mean*(1-p).]
+
+## 2.2
+>Calculate the probabilities of making 5, 6, 7, … transactions in a month.
+
+## 2.3
+>Calculate the expected total bank charges for one month.
+
+# 3. Letter Carriers
+<strong>A Canada Post letter carrier delivers mail to houses on a street. The number of mail items to be delivered to an individual house follows a Poisson distribution with mean = 1.3 and is independent from one house to another. The time taken to walk past a house for which there are no items requiring delivery is 15 seconds. The time taken to deliver items to a house is 15 seconds (plus the 15 seconds to walk past) independent of the number of items requiring delivery. When deciding how many houses to assign to a letter carrier, we need to estimate how much uncertainty there is in the time required to deliver mail to a lot of houses, in relation to the expected time required.</strong>
+
+## 3.1 
+>For a given house, what is the probability that there are no items requiring delivery?
+
+## 3.2
+>What is the expected time taken by the letter carrier for a single house?
+
+## 3.3
+>What is the coefficient of variation of the time taken by the letter carrier for a single house
+
+## 3.4
+>What is the expected time taken by the letter carrier for a street of 100 houses?
+
+## 3.5
+> What is the coefficient of variation of the time taken by the letter carrier for a street of 100 houses?
