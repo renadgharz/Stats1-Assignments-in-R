@@ -1,14 +1,22 @@
-
-
-# Age groups | 1 - Infant (0-1); 2 - Toddler (1-4); 3 - School (4-9); 4 - Older (>9)
-# Restraint Type | R - Rear-facing; F - Forward-facing; B - Booster seat; S - Seat belt
-
 data <- read.csv('Child Safety Seat Survey (Win).csv', header = TRUE)
 
-crosstab <- table(data$AgeGroup, data$RestType)
+# 1.1 Contingency Table
+crosstab <- table(data$AgeGroup, data$RestType)# Converting data to contingency table
+crosstab_margin <- addmargins(crosstab)# Adding margins (sums) to contingency table
 
-crosstab_margin <- addmargins(crosstab)
+prop_table <- prop.table(crosstab)# Converting contingency table to proportion format
+prop_table_margin <- addmargins(prop_table)# Adding margins (sums) to proportion contingency table
 
-crosstab_margin
+# 1.2 Data Types
+# No calculations required
 
-     
+# 1.3 Side-by-Side Bar Chart
+
+
+
+# 1.4 Pie and Stacked Bar Charts
+
+
+
+# 1.5 Summary of Data
+# No calculations required

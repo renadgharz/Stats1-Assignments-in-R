@@ -7,19 +7,34 @@ output: pdf_document
 # 1. Child Safety Seat Survey
 <strong>Canada has a Road Safety Vision of having the safest roads in the world. Yet, the leading cause of death of Canadian children remains vehicle crashes. In 2006, a national child safety seat survey was conducted by an AUTO21 research team in collaboration with Transport Canada to empirically measure Canada’s progress toward achieving Road Safety Vision 20210. Child seat use was observed in parking lots and nearby intersections in 200 randomly selected sites across Canada.</strong>
 
-## 1.1
+<table>
+    <tr> <th colspan="2">Age Groups</th> </tr>
+    <tr> <td>1</td> <td>Infant (0-1)</td> </tr>
+    <tr> <td>2</td> <td>Toddler (1-4)</td> </tr>
+    <tr> <td>3</td> <td>School (4-9)</td> </tr>
+    <tr> <td>4</td> <td>Older (9+)</td> </tr>
+</table>
+<table>
+    <tr> <th colspan="2">Restraint Type</th> </tr>
+    <tr> <td>B</td> <td>Booster seat</td> </tr>
+    <tr> <td>F</td> <td>Forward-facing</td> </tr>
+    <tr> <td>R</td> <td>Rear-facing</td> </tr>
+    <tr> <td>S</td> <td>Seat belt</td> </tr>
+</table>
+
+## 1.1 Contingency Table
 >Using data table, create a 4×4 cross-tabulation (i.e., contingency or pivot table) of the children in the survey by age group (row position) and type of restraint (columnposition).
 
-## 1.2
+## 1.2 Data Types
 >What are the variables measured in this survey? Are they qualitative (i.e., categorical) or quantitative?
 
-## 1.3
+## 1.3 Side-by-Side Bar Chart
 >Construct a side-by-side bar chart to compare the type of restraints at different age groups.
 
-## 1.4
+## 1.4 Pie and Stacked Bar Charts
 >Construct pie charts or a stacked bar chart to compare the type of restraints at different age groups.
 
-## 1.5
+## 1.5 Summary of Data
 >Write a short paragraph summarizing the information that can be gained by looking at these graphs.
 
 # 2. National Cable Service
