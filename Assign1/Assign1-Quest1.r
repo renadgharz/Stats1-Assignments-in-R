@@ -11,7 +11,7 @@ prop_table_margin <- addmargins(prop_table)# Adding margins (sums) to proportion
 # No calculations required
 
 # 1.3 Side-by-Side Bar Chart
-
+barplot(crosstab)
 
 
 # 1.4 Pie and Stacked Bar Charts
