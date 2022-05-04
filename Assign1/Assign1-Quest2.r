@@ -7,4 +7,13 @@ cable_service_table <- data.frame(B = c(8.2, 10.1, 18.3),
 library(dplyr)
 cable_service_table_prop <- cable_service_table
 cable_service_table_prop %>% mutate(across(where(is.numeric)) / 38)
-                                    
+
+# 2.2 Probability of Union
+
+# 2.3 Probability of Intersection
+
+# 2.4 Mutually Exclusive Events
+
+# 2.5 Independence of Events
+
+# 2.6 Conditional Probability
