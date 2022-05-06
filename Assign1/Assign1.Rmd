@@ -64,11 +64,11 @@ for Delta and Frontier Airlines at five major airports.
 
 ![Frontier Airlines Flights Table](./figures/frontier_airlines.png)
 
-## 3.1
+## 3.1 Marginal Probabilities
 >What percentage of all Delta Airlines flights were delayed? That is, use the data to estimate the probability that an Delta Airline flight will be delayed. Do the same for Frontier Airlines? Which airline does best overall?
 
-## 3.2
+## 3.2 Conditional Probabilities
 >For Delta Airlines, find the percentage of delayed flights at each airport. That is, use the data to estimate each of the probabilities P(delayed | Los Angeles), P(delayed | Phoenix), and so on. Then do the same for Frontier Airlines. Which airline does best at each individual airport?
 
-## 3.3
+## 3.3 Simpson's Paradox
 >Compare the results of part 3.1 and 3.2 i.e., the performance of both airlines? Are they aligned or contradictory? Explain.
