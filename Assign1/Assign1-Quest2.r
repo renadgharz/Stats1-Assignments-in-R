@@ -24,3 +24,4 @@ Prob_Ac_n_Bc <- cable_service_table_prop[2,2]
 cable_service_table_prop[1,1] == cable_service_table_prop[1,3] * cable_service_table_prop[3,1]
 
 # 2.6 Conditional Probability
+Prob_Bc_given_A <- cable_service_table_prop[1,2] / cable_service_table_prop[1,3]
