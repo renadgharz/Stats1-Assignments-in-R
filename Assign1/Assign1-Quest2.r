@@ -11,10 +11,10 @@ cable_service_table_prop <- data.frame(B = c(8.2, 10.1, 18.3),
   mutate(across(where(is.numeric)) / cable_service_table[3,3])
 
 # 2.2 Probability of Union
-Prob_A_u_B <- cable_service_table_prop[1,3] + cable_service_table_prop[3,1] - cable_service_table_prop[1,1]
+prob_A_u_B <- cable_service_table_prop[1,3] + cable_service_table_prop[3,1] - cable_service_table_prop[1,1]
 
 # 2.3 Probability of Intersection
-Prob_Ac_n_Bc <- cable_service_table_prop[2,2]
+prob_Ac_n_Bc <- cable_service_table_prop[2,2]
 
 # 2.4 Mutually Exclusive Events
 # No calculations are required
@@ -23,4 +23,4 @@ Prob_Ac_n_Bc <- cable_service_table_prop[2,2]
 cable_service_table_prop[1,1] == cable_service_table_prop[1,3] * cable_service_table_prop[3,1]
 
 # 2.6 Conditional Probability
-Prob_Bc_given_A <- cable_service_table_prop[1,2] / cable_service_table_prop[1,3]
+prob_Bc_given_A <- cable_service_table_prop[1,2] / cable_service_table_prop[1,3]
