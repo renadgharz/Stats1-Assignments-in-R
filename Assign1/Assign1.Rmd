@@ -35,23 +35,23 @@ $$
 
 National’s cable has 38 million cable passings. Let us consider National cable’s two services viz. cable television service (A) and cable internet service (B). 10.9 million has only cable television service and 10.1 million has only cable internet service, while 8.2 million has both services.
 
-## 2.1
+## 2.1 Contingency Tables
 >Create a 2 × 2 contingency table considering cable television service (A) in the row position and cable internet service in the column position (B).
 
-## 2.2
+## 2.2 Probability of Union
 >What is the probability that a randomly selected cable passing has either cable television service or cable internet service?
 
-## 2.3
+## 2.3 Probability of Intersection
 >What is the probability that a randomly selected cable passing does not have National’s cable television service and does not have National’s cable internet service?
 
-## 2.4
+## 2.4 Mutually Exclusive Events
 >Are the events cable television service and cable internet service mutually exclusive? Justify.
 
-## 2.5
+## 2.5 Independence of Events
 >Are the events cable television service and cable internet service independent? Justify.
 
 
-## 2.6
+## 2.6 Conditional Probability
 >If a randomly selected cable has television service, what is the probability that it does not have cable internet service?
 
 
