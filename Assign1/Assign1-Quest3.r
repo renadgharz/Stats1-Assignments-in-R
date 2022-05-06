@@ -39,5 +39,8 @@ p_frontier_delayed_given_san_diego <- frontier_flights_prop[3,2] / frontier_flig
 p_frontier_delayed_given_san_francisco <- frontier_flights_prop[4,2] / frontier_flights_prop[4,3]
 p_frontier_delayed_given_seattle <- frontier_flights_prop[5,2] / frontier_flights_prop[5,3]
 
+summary_conditional_probabilities <- data.frame(Delta = c(p_delta_delayed_given_los_angeles,p_delta_delayed_given_phoenix,p_delta_delayed_given_san_diego,p_delta_delayed_given_san_francisco,p_delta_delayed_given_seattle),
+                                                Frontier = c(p_frontier_delayed_given_los_angeles,p_frontier_delayed_given_phoenix,p_frontier_delayed_given_san_diego,p_frontier_delayed_given_san_francisco,p_frontier_delayed_given_seattle),
+                                                row.names = c("Los Angeles","Phoenix","San Diego","San Francisco","Seattle"))
 # 3.3 Simpson's Paradox
 # No calculations required
