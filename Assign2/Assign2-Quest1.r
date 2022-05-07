@@ -28,6 +28,7 @@ tree$`90% Efficient Aircraft`$p <- 0.7
     tree$`90% Efficient Aircraft`$`Not Economic in 5 Years`$`90% Efficient Aircraft and Not Economic in 5 Years`$p <- tree$`90% Efficient Aircraft`$p * tree$`90% Efficient Aircraft`$`Not Economic in 5 Years`$p
 
 # 1.3 Joint Probabilities
+p_economic_5_years <- tree$`80% Efficient Aircraft`$`Economic in 5 Years`$`80% Efficient Aircraft and Economic in 5 Years`$p + tree$`90% Efficient Aircraft`$`Economic in 5 Years`$`90% Efficient Aircraft and Economic in 5 Years`$p
 
 # 1.4 Extended Probability Tree
 
