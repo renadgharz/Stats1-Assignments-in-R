@@ -21,7 +21,6 @@ tree$`80% Efficient Aircraft`$p <- 0.3
     tree$`80% Efficient Aircraft`$`Economic in 5 Years`$`80% Efficient Aircraft and Economic in 5 Years`$p <- tree$`80% Efficient Aircraft`$p * tree$`80% Efficient Aircraft`$`Economic in 5 Years`$p
   tree$`80% Efficient Aircraft`$`Not Economic in 5 Years`$p <- 0.4
     tree$`80% Efficient Aircraft`$`Not Economic in 5 Years`$`80% Efficient Aircraft and Not Economic in 5 Years`$p <- tree$`80% Efficient Aircraft`$p * tree$`80% Efficient Aircraft`$`Not Economic in 5 Years`$p
-
 tree$`90% Efficient Aircraft`$p <- 0.7
   tree$`90% Efficient Aircraft`$`Economic in 5 Years`$p <- 0.8
     tree$`90% Efficient Aircraft`$`Economic in 5 Years`$`90% Efficient Aircraft and Economic in 5 Years`$p <- tree$`90% Efficient Aircraft`$p * tree$`90% Efficient Aircraft`$`Economic in 5 Years`$p
