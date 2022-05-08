@@ -23,6 +23,6 @@ expected_time_100_houses <- sum(probabilities_100_houses$`E(t)`) # Calculating t
 
 # 3.5 Coefficient of Variation for 100 Houses
 variance_100_houses <- sum((probabilities_100_houses$t - probabilities_100_houses$`E(t)`)^2 * probabilities_100_houses$`P(t)`^2) # calculating the variance of 100 houses
-sd_100_houses <- sqrt(variance_100_houses) # Calcualting the standard deviation
+sd_100_houses <- sqrt(variance_100_houses) # Calculating the standard deviation
 
 coeff_of_var_100_houses <- sd_100_houses / expected_time_100_houses # Coefficient of variation of 100 houses
