@@ -89,4 +89,4 @@ p_economic_electric_7_years <-
   tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`90% Efficient Aircraft and economical in 5 and 7 years; Hydrogen, Electric`$p + 
   tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`90% Efficient Aircraft and not economical in 5 but in 7 years; Hydrogen, Electric`$p # Calculating the probability that an economical electric aircraft will be developed in 7 years
 
-revised_p_economic_7_years <- p_economic_electric_7_years / p_economic_5_years # Calculating the revised probability
+revised_p_economic_7_years <- p_economic_electric_7_years / p_economic_5_years # Calculating the revised probability that an economical electric aircraft will be developed in 7 years
