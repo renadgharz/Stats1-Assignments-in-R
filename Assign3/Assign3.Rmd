@@ -11,42 +11,42 @@ Cost of license fees ($m): (24.5, 27.2)
 Cost of purchasing podcasts ($m): (1.1, 6.2)
 Revenues (from subscriptions and advertising) ($m):(43.9, 51.9)
 
-## 1.1
+## 1.1 Coefficient of Variation 
 >What is the coefficient of variation of each of the items in the table?
 
-## 1.2
+## 1.2 Confidence Interval for Costs
 >What is the central range within which there is 90% probability for total costs? State your assumption clearly and comment on whether you think it is valid. Are total costs Normally distributed? Give a reason for your answer.
 
-## 1.3
+## 1.3 Confidence Interval for Profits
 >Revenues are related to the number of subscribers, as are licence fee costs, so that they are correlated. Revenues and total costs have a correlation coefficient of 0.58. What is the central range within which there is 90% probability for profits = revenues minus total costs?
 
-## 1.4
+## 1.4 Coefficient of Variation of Profits
 >What is the coefficient of variation of profits?
 
 # 2. The Sun and the Wind
 A company is planning to generate renewable electricity from an installation including both wind turbines and solar modules. It has selected a coastal site with plenty of wind and sun. The data file contains estimates of how much wind and solar electricity (kWh) would be generated each hour for a sample of one week from measurements of wind speed and solar radiation at the site.
 
-## 2.1
+## 2.1 Scatterplot
 >Draw a scatter diagram of solar output against wind output.
 
-## 2.2
+## 2.2 Plot Analysis
 >From the diagram comment on the direction, form and strength of the relationship between solar and wind output.
 
-## 2.3
+## 2.3 Extreme Points/Outliers
 >On the scatter diagram indicate 5 hours during which it was very windy at night. On the scatter diagram indicate 3 hours of exceptionally bright sunshine when it was calm (not very windy).
 
-## 2.4
+## 2.4 Correlation Coefficient
 >Calculate the correlation coefficient between solar output and wind output.
 
-## 2.5
+## 2.5 Negative Correlation Explanation
 > From your experience of sun and wind, explain why the correlation coefficient is negative.
 
-## 2.6
+## 2.6 Histogram - Wind Output
 > Draw a histogram of wind output, giving the reason for choosing the number of bins/groups/bars.
 
 ## 2.7
 >Draw a histogram of solar output, giving the reason for choosing the number of bins/groups/bars.
 
-## 2.8
+## 2.8 Scaterrplot vs Histogram
 >What can you tell from the scatterplot that you cannot tell from the histograms?
 
