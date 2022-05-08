@@ -40,10 +40,10 @@ For one type of bank account, a bank allows 4 transactions per month for free an
 # 3. Letter Carriers
 A Canada Post letter carrier delivers mail to houses on a street. The number of mail items to be delivered to an individual house follows a Poisson distribution with mean = 1.3 and is independent from one house to another. The time taken to walk past a house for which there are no items requiring delivery is 15 seconds. The time taken to deliver items to a house is 15 seconds (plus the 15 seconds to walk past) independent of the number of items requiring delivery. When deciding how many houses to assign to a letter carrier, we need to estimate how much uncertainty there is in the time required to deliver mail to a lot of houses, in relation to the expected time required.
 
-## 3.1 Probability of Single Event
+## 3.1 Poisson Distribution (1)
 >For a given house, what is the probability that there are no items requiring delivery?
 
-## 3.2 Poisson Distribution
+## 3.2 Poisson Distribution (2)
 >What is the expected time taken by the letter carrier for a single house?
 
 ## 3.3 Coefficient of Variation for 1 House
