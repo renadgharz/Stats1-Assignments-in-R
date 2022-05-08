@@ -2,13 +2,11 @@
 title: "ADM 2303 - Assignment 2"
 author: "Renad Gharzeddine"
 date: "06/05/2022"
-output:
-  pdf_document:
-    fig_caption: true
+output: pdf_document
 ---
 
 # 1. Next Generation Aircraft
-In order to reduce carbon emissions from commercial passenger aircraft,  research is underway on two different methods of powering them: electric motors or hydrogen turbines. The electricity and hydrogen would be obtained from renewable power sources such as wind and solar. The hydrogen would be produced by electrolysis of water which is currently only 80% efficient. Electric aircraft can use multiple motors driving propellers along the length of the wings increasing the airflow over the wing, thus reducing the size and cost of the wing and improving efficiency. Hydrogen turbines can be integrated into the airframe, also improving efficiency and reducing capital cost.<br>
+In order to reduce carbon emissions from commercial passenger aircraft,  research is underway on two different methods of powering them: electric motors or hydrogen turbines. The electricity and hydrogen would be obtained from renewable power sources such as wind and solar. The hydrogen would be produced by electrolysis of water which is currently only 80% efficient. Electric aircraft can use multiple motors driving propellers along the length of the wings increasing the airflow over the wing, thus reducing the size and cost of the wing and improving efficiency. Hydrogen turbines can be integrated into the airframe, also improving efficiency and reducing capital cost.
 
 A technology forecasting company needs to advise investors as to the probability that new designs of aircraft will become available. It analyses future scenarios as follows. With 80% efficient electrolysis (which is already available today), the probability of a hydrogen aircraft being economical in 5 years is 0.6. The efficiency of electrolysis can be improved to 90% within 5 years with a probability of 0.7. With 90% efficient electrolysis, the probability of a hydrogen aircraft being economical in 5 years is 0.8.
 
@@ -28,7 +26,7 @@ A technology forecasting company needs to advise investors as to the probability
 >What is the probability that an economical electric aircraft will be developed in 7 years?
 
 # 2. Bank Charges
-For one type of bank account, a bank allows 4 transactions per month for free and charges $1 per transaction for the 5th and subsequent transactions. (E.g. if I make 7 transactions I will pay (7-4)*$1 = $3.) The number of transactions I make each month has a mean of 4 and a variance of 2.4 and follows a Binomial distribution. I need to estimate how much I expect to pay each month in bank charges.
+For one type of bank account, a bank allows 4 transactions per month for free and charges 1 dollar per transaction for the 5th and subsequent transactions. (E.g. if I make 7 transactions I will pay (7-4)*1 = $3.) The number of transactions I make each month has a mean of 4 and a variance of 2.4 and follows a Binomial distribution. I need to estimate how much I expect to pay each month in bank charges.
 
 ## 2.1 Finding p and n
 >Calculate the probability, p, and the number, n, that define the Binomial distribution of the number of transactions each month. [Hint: Use the formulas for the mean and variance of the Binomial Distribution. Mean = np, Variance = np(1-p) = Mean*(1-p).]

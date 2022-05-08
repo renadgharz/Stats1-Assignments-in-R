@@ -33,7 +33,8 @@ tree$`90% Efficient Aircraft`$p <- 0.7
 p_economic_5_years <- tree$`80% Efficient Aircraft`$`Economic in 5 Years`$`80% Efficient Aircraft and Economic in 5 Years`$p + tree$`90% Efficient Aircraft`$`Economic in 5 Years`$`90% Efficient Aircraft and Economic in 5 Years`$p # Probability that an economical hydrogen aircraft will be developed in 5 years
 
 # 1.4 Extended Probability Tree
-tree_new <- Node$new("Hydrogen Aircraft")
+tree_new <- Node$new("Hydrogen Aircraft") # Initializing another probability tree by creating a new node
+# Adding the different branches of the probability tree and their description
   efficient_80_percent <- tree_new$AddChild("80% Efficient Aircraft")
     economic_5_years <- efficient_80_percent$AddChild("Economical in 5 Years (Hydrogen)")
       economic_7_years <- economic_5_years$AddChild("Economical in 7 Years (Electric)")
@@ -57,6 +58,7 @@ tree_new <- Node$new("Hydrogen Aircraft")
       not_economic_7_years <- not_economic_5_years$AddChild("Not Economical in 7 years (Electric)")
         efficient_90_percent_and_not_economic_5_years_and_not_economic_7_years <- not_economic_7_years$AddChild("90% efficient Aicraft and not economical in 5 nor 7 years; Hydrogen, Electric")
 
+# Adding the probabilities of the tree's branches and calculating the joint probabilities
 tree_new$`80% Efficient Aircraft`$p <- 0.3
   tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$p <- 0.6
     tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p <- 0.5
