@@ -19,7 +19,7 @@ sd_rv <- sd(rv) # Standard Deviation of revenues
 coeff_var_lc <- sd_lc / mean_lc # Coefficient of variation of license costs
 coeff_var_pc <- sd_pc / mean_pc # Coefficient of variation of podcast costs
 coeff_var_rv <- sd_rv / mean_rv # Coefficient of variation of revenues
-  
+
 # 1.2 Confidence Interval for Costs
 exp_tc <- mean_lc + mean_pc # Expected value of total costs
 sd_tc <- sqrt(sd_lc^2 + sd_pc^2) # Standard deviation of total costs
