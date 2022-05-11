@@ -27,7 +27,7 @@ crosstab_stackedbars <- barplot(crosstab_inverse,
                                                    inset=c(0.01, 0)))# Clustered bar chart comparing restraint types across the 4 age groups
 
 # 1.4 Stacked Bar Charts
-crosstab_stackedbars <- barplot(crosstab_inverse,
+crosstab_clustered_bars <- barplot(crosstab_inverse,
                                 main = "Restaint Types by Age Groups",
                                 sub = "Stacked Bar Chart",
                                 xlab = "Age Groups",

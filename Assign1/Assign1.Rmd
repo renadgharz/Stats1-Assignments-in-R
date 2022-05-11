@@ -2,30 +2,109 @@
 title: "ADM 2303 - Assignment 1"
 author: "Renad Gharzeddine"
 date: "02/05/2022"
-output:
-  pdf_document:
-    fig_caption: true
+output: pdf_document
 ---
+```{r, echo=FALSE}
+load(file = '.RData')
+library(RColorBrewer)
+library(dplyr)
+```
 
 # 1. Child Safety Seat Survey
 Canada has a Road Safety Vision of having the safest roads in the world. Yet, the leading cause of death of Canadian children remains vehicle crashes. In 2006, a national child safety seat survey was conducted by an AUTO21 research team in collaboration with Transport Canada to empirically measure Canada’s progress toward achieving Road Safety Vision 20210. Child seat use was observed in parking lots and nearby intersections in 200 randomly selected sites across Canada.
 
-![Age Groups and Restraint Types Table](./figures/age_groups.png)
+__Age Groups__
+```{r, echo=FALSE}
+age_groups <- data.frame("1" = 1:4, 
+                         "2" = c("Infant (0-1)", "Toddler (1-4)", "School (4-9)", "Older (9+)"))
+age_groups
+```
+
+__Restraint Types__ 
+```{r, echo=FALSE}
+restraint_types <- data.frame("1" = c("R", "F", "B", "S"), 
+                              "2" = c("Rear-facing", "Forward-facing", "Booster seat", "Seat belt"))
+restraint_types
+```
 
 ## 1.1 Contingency Table
 >Using data table, create a 4×4 cross-tabulation (i.e., contingency or pivot table) of the children in the survey by age group (row position) and type of restraint (columnposition).
 
+Crosstab with counts:
+
+```{r, echo=TRUE}
+crosstab <- table(data$AgeGroup, data$RestType)# Converting data to contingency table
+crosstab_margins <- addmargins(crosstab)# Adding margins (sums) to contingency table
+crosstab_margins
+```
+
+Crosstab with proportions:
+
+```{r, echo=TRUE}
+prop_table <- prop.table(crosstab)# Converting contingency table to proportion format
+prop_table_margins <- addmargins(prop_table)# Adding margins (sums) to proportion contingency table
+round(prop_table_margins, digits = 4)
+```
+
 ## 1.2 Data Types
 >What are the variables measured in this survey? Are they qualitative (i.e., categorical) or quantitative?
+
+There are 2 variables measured in this survey: _AgeGroup_, _RestType_. Both variables are qualitative (or categorical) in nature; _AgeGroup_ because we are looking at which age group the children in the survey belong in rather than their actual age itself, and _RestType_ because we are looking at the type of safety restraint applied to each child, there are no quantifiable values. _AgeGroup_ has 4 possible values: 1, 2, 3, 4; and _RestType_ also has 4 possible values: B, F, R, S.
 
 ## 1.3 Side-by-Side Bar Chart
 >Construct a side-by-side bar chart to compare the type of restraints at different age groups.
 
+```{r, echo=TRUE}
+crosstab_inverse <- table(data$RestType, data$AgeGroup) # Flipping rows and columns of the crosstab
+crosstab_clustered_bars <- barplot(crosstab_inverse, 
+                                beside = TRUE,
+                                main = "Restaint Types by Age Groups",
+                                sub = "Clustered Bar Chart",
+                                xlab = "Age Groups",
+                                ylab = "Frequencies",
+                                col = brewer.pal(n = 4, name = "Accent"),
+                                legend.text = c("B","F","R","S"),
+                                args.legend = list(x = "topleft", 
+                                                   bty = "n", 
+                                                   inset=c(0.01, 0)))# Clustered bar chart comparing restraint types across the 4 age groups
+```
+
 ## 1.4 Pie and Stacked Bar Charts
 >Construct pie charts or a stacked bar chart to compare the type of restraints at different age groups.
 
+Stacked bar charts (counts):
+```{r, echo=TRUE}
+crosstab_stackedbars <- barplot(crosstab_inverse,
+                                main = "Restaint Types by Age Groups",
+                                sub = "Stacked Bar Chart",
+                                xlab = "Age Groups",
+                                ylab = "Frequencies",
+                                col = brewer.pal(n = 4, name = "Accent"),
+                                legend.text = c("B","F","R","S"),
+                                args.legend = list(x = "topleft", 
+                                                   bty = "n", 
+                                                   inset=c(0.01, 0))) # Stacked bar chart comparing restraint types across the 4 age groups
+```
+
+Stacked bar charts (percentages):
+```{r, echo=TRUE}
+prop_table_inverse <- prop.table(crosstab_inverse) * 100 # Converting proportions to percentages for better legibility
+crosstab_stackedbars <- barplot(prop_table_inverse,
+                                main = "Restaint Types by Age Groups (%)",
+                                sub = "Stacked Bar Chart",
+                                xlab = "Age Groups",
+                                ylab = "Percentages",
+                                col = brewer.pal(n = 4, name = "Accent"),
+                                legend.text = c("B","F","R","S"),
+                                args.legend = list(x = "topleft", 
+                                                   bty = "n", 
+                                                   inset=c(0.01, 0))) # Stacked bar chart comparing restraint types across the 4 age groups (in %)
+```
+
 ## 1.5 Summary of Data
 >Write a short paragraph summarizing the information that can be gained by looking at these graphs.
+
+From these graphs we can conclude that starting from age 4 to 9, children can start foregoing other restraints in exchange for seat belts while almost all children aged 9 or older don’t require  booster seats anymore and can simply use seat belts. As for infants, they need to be put in a rear-facing position in cars and starting from 1 to 4 years old they can be switched to front-facing positions, while few remain rear-facing and some toddlers can even be placed in booster seats.
 
 # 2. National Cable Service
 Like all companies, cable companies send stakeholders reports on their profits, dividends, and return on equity. They often supplement this information with some metrics unique to the cable business. To construct one such metric, a cable company can compare the number of households it actually serves to the number of households its current transmission lines could reach (without extending lines). The number of households that the cable company’s lines could reach is called its number of cable passings, while the ratio of the number of households the cable company actually serves to its number of cable passings is called the company’s cable penetration. There are various types of cable penetrations - one for cable television, one for cable internet, once for cable phone, and others. For example, National cable television penetration is a probability defined as follows:
@@ -40,30 +119,72 @@ National’s cable has 38 million cable passings. Let us consider National cable
 ## 2.1 Contingency Tables
 >Create a 2 × 2 contingency table considering cable television service (A) in the row position and cable internet service in the column position (B).
 
+Crosstab with counts:
+```{r, echo=TRUE}
+cable_service_table <- data.frame(B = c(8.2, 10.1, 18.3), 
+                                  B_c = c(10.9, 8.8, 19.7), 
+                                  Sum = c(19.1, 18.9, 38), 
+                                  row.names = c("A", "A_c", "Sum")) # Creating "crosstab" of the data using data.frame()
+                                                                    # Can't use table() function because full dataset is not provided
+cable_service_table
+```
+
+Crosstab with proportions:
+```{r, echo=TRUE}
+cable_service_table_prop <- data.frame(B = c(8.2, 10.1, 18.3), 
+                                       B_c = c(10.9, 8.8, 19.7), 
+                                       Sum = c(19.1, 18.9, 38), 
+                                       row.names = c("A", "A_c", "Sum")) %>% 
+  mutate(across(where(is.numeric)) / cable_service_table[3,3]) # Converting crosstab from frequencies to proportions using pipe operator and mutate()
+round(cable_service_table_prop, digits = 4)
+```
+
 ## 2.2 Probability of Union
 >What is the probability that a randomly selected cable passing has either cable television service or cable internet service?
+
+```{r}
+prob_A_u_B <- cable_service_table_prop[1,3] + cable_service_table_prop[3,1] - cable_service_table_prop[1,1] # Formula of union: P(AuB)=P(A)+P(B)-P(AnB)
+prob_A_u_B
+```
 
 ## 2.3 Probability of Intersection
 >What is the probability that a randomly selected cable passing does not have National’s cable television service and does not have National’s cable internet service?
 
+```{r, echo=TRUE}
+prob_Ac_n_Bc <- cable_service_table_prop[2,2] # Joint probability
+prob_Ac_n_Bc
+```
+
 ## 2.4 Mutually Exclusive Events
 >Are the events cable television service and cable internet service mutually exclusive? Justify.
+
+No, cable television service and cable internet service are NOT mutually exclusive because they can happen at the same time because it’s possible for cable passings to have both (8.2 million capable passings or 21.58% of all cable passings to be exact). The occurrence of cable television service does not preclude cable internet service and vice-versa, thus they are not mutually exclusive.
+
+We can also prove that they are not mutually exclusive since $P(A \cap B) \neq 0$, where A is cable television service and B is cable internet service, which is a requirement for 2 events to be mutually exclusive.
 
 ## 2.5 Independence of Events
 >Are the events cable television service and cable internet service independent? Justify.
 
+```{r, echo=TRUE}
+cable_service_table_prop[1,1] == cable_service_table_prop[1,3] * cable_service_table_prop[3,1]  # Since joint probability of A and B are not equal to the product of the individual probabilities of A and B, they are not independent
+```
+
+$P(A \cap B) \neq P(A) \cdot P(B)$ thus, the events A and B are not independent because they fail one of the 3 conditions for independent events.
 
 ## 2.6 Conditional Probability
 >If a randomly selected cable has television service, what is the probability that it does not have cable internet service?
 
+```{r, echo=TRUE}
+prob_Bc_given_A <- cable_service_table_prop[1,2] / cable_service_table_prop[1,3] # Join probability of events A and B divided by the marginal probability of A
+prob_Bc_given_A
+```
 
 # 3. Flight Delays
 Below we give two contingency tables of data from reports submitted by airlines to the U.S.
 Department of Transportation. The data concern the numbers of on-time and delayed flights
 for Delta and Frontier Airlines at five major airports.
 
-\center __Delta Airlines__ \center
-
+__Delta Airlines__
 
 ```{r, echo=FALSE}
 delta_flights <- data.frame(OnTime = c(248,110,106,252,920,1636),
@@ -73,7 +194,7 @@ delta_flights <- data.frame(OnTime = c(248,110,106,252,920,1636),
 delta_flights
 ```
 
-\center __Frontier Airlines__ \center
+__Frontier Airlines__
 
 ```{r, echo=FALSE}
 frontier_flights <- data.frame(OnTime = c(231,1613,128,107,67,2146),
@@ -83,11 +204,87 @@ frontier_flights <- data.frame(OnTime = c(231,1613,128,107,67,2146),
 frontier_flights
 ```
 
+We can convert the count data above into proportions to make it easier to calculate probabilities:
+
+Delta Airlines:
+```{r, echo=TRUE}
+delta_flights_prop <- data.frame(OnTime = c(248,110,106,252,920,1636),
+                                 Delayed = c(31,6,10,51,152,250),
+                                 Total = c(279,116,116,303,1072,1886),
+                                 row.names = c("Los Angeles","Phoenix","San Diego","San Francisco","Seattle","Total")) %>%
+  mutate(across(where(is.numeric)) / delta_flights[6,3]) # Table for Delta Airlines
+round(delta_flights_prop, digits = 4)
+```
+
+Frontier Airlines:
+```{r, echo=TRUE}
+frontier_flights_prop <- data.frame(OnTime = c(231,1613,128,107,67,2146),
+                                    Delayed = c(39,138,22,43,20,262),
+                                    Total = c(270,1751,150,150,87,2408),
+                                    row.names = c("Los Angeles","Phoenix","San Diego","San Francisco","Seattle","Total")) %>%
+  mutate(across(where(is.numeric)) / frontier_flights[6,3])# Table for Frontier Airlines
+round(frontier_flights_prop, digits = 4)
+```
+
+
 ## 3.1 Marginal Probabilities
 >What percentage of all Delta Airlines flights were delayed? That is, use the data to estimate the probability that an Delta Airline flight will be delayed. Do the same for Frontier Airlines? Which airline does best overall?
+
+```{r, echo=TRUE}
+delayed_delta_flights <- delta_flights_prop[6,2] # Probability of delayed flights for Delta Airlines
+round(delayed_delta_flights, digits = 4)
+
+delayed_frontier_flights <- frontier_flights_prop[6,2] # Probability of delayed flights for Frontier Airlines
+round(delayed_frontier_flights, digits = 4)
+```
 
 ## 3.2 Conditional Probabilities
 >For Delta Airlines, find the percentage of delayed flights at each airport. That is, use the data to estimate each of the probabilities P(delayed | Los Angeles), P(delayed | Phoenix), and so on. Then do the same for Frontier Airlines. Which airline does best at each individual airport?
 
+```{r, echo=TRUE}
+# Delta Airlines
+p_delta_delayed_given_los_angeles <- delta_flights_prop[1,2] / 
+  delta_flights_prop[1,3] # P(Delta | Los Angeles)
+p_delta_delayed_given_phoenix <- delta_flights_prop[2,2] / 
+  delta_flights_prop[2,3] # P(Delta | Phoenix)
+p_delta_delayed_given_san_diego <- delta_flights_prop[3,2] / 
+  delta_flights_prop[3,3] # P(Delta | San Diego)
+p_delta_delayed_given_san_francisco <- delta_flights_prop[4,2] / 
+  delta_flights_prop[4,3] # P(Delta | San Francisco)
+p_delta_delayed_given_seattle <- delta_flights_prop[5,2] / 
+  delta_flights_prop[5,3] # P(Delta | Seattle)
+
+# Frontier Airlines
+p_frontier_delayed_given_los_angeles <- frontier_flights_prop[1,2] / 
+  frontier_flights_prop[1,3] # P(Frontier | Los Angeles)
+p_frontier_delayed_given_phoenix <- frontier_flights_prop[2,2] / 
+  frontier_flights_prop[2,3] # P(Frontier | Phoenix)
+p_frontier_delayed_given_san_diego <- frontier_flights_prop[3,2] / 
+  frontier_flights_prop[3,3] # P(Frontier | San Diego)
+p_frontier_delayed_given_san_francisco <- frontier_flights_prop[4,2] / 
+  frontier_flights_prop[4,3] # P(Frontier | San Francisco)
+p_frontier_delayed_given_seattle <- frontier_flights_prop[5,2] / 
+  frontier_flights_prop[5,3] # P(Frontier | Seattle)
+
+# Dataframe to display all the conditional probabilities from 3.2 in a readable format
+summary_conditional_probabilities <- 
+  data.frame(Delta = c(p_delta_delayed_given_los_angeles,
+                        p_delta_delayed_given_phoenix,
+                        p_delta_delayed_given_san_diego,
+                        p_delta_delayed_given_san_francisco,
+                        p_delta_delayed_given_seattle),
+            Frontier = c(p_frontier_delayed_given_los_angeles,
+                           p_frontier_delayed_given_phoenix,
+                           p_frontier_delayed_given_san_diego,
+                           p_frontier_delayed_given_san_francisco,
+                           p_frontier_delayed_given_seattle),
+            row.names = c("Los Angeles","Phoenix","San Diego","San Francisco","Seattle"))
+round(summary_conditional_probabilities, digits = 4)
+```
+
+From the table above, we can conclude that Delta Airlines does better than Frontier Airlines at each airport in terms of percentage of delayed flights.
+
 ## 3.3 Simpson's Paradox
 >Compare the results of part 3.1 and 3.2 i.e., the performance of both airlines? Are they aligned or contradictory? Explain.
+
+We cannot compare the results from 3.1 to the results from 3.2 because of Simpson's Paradox.
