@@ -5,25 +5,154 @@ date: "06/05/2022"
 output: pdf_document
 ---
 
+```{r, echo=FALSE}
+library(data.tree)
+library(dplyr)
+```
+
 # 1. Next Generation Aircraft
 In order to reduce carbon emissions from commercial passenger aircraft,  research is underway on two different methods of powering them: electric motors or hydrogen turbines. The electricity and hydrogen would be obtained from renewable power sources such as wind and solar. The hydrogen would be produced by electrolysis of water which is currently only 80% efficient. Electric aircraft can use multiple motors driving propellers along the length of the wings increasing the airflow over the wing, thus reducing the size and cost of the wing and improving efficiency. Hydrogen turbines can be integrated into the airframe, also improving efficiency and reducing capital cost.
 
-A technology forecasting company needs to advise investors as to the probability that new designs of aircraft will become available. It analyses future scenarios as follows. With 80% efficient electrolysis (which is already available today), the probability of a hydrogen aircraft being economical in 5 years is 0.6. The efficiency of electrolysis can be improved to 90% within 5 years with a probability of 0.7. With 90% efficient electrolysis, the probability of a hydrogen aircraft being economical in 5 years is 0.8.
+A technology forecasting company needs to advise investors as to the probability that new designs of aircraft will become available. It analyses future scenarios as follows. With 80% efficient electrolysis (which is already available today), the probability of a hydrogen aircraft being Economicalal in 5 years is 0.6. The efficiency of electrolysis can be improved to 90% within 5 years with a probability of 0.7. With 90% efficient electrolysis, the probability of a hydrogen aircraft being Economicalal in 5 years is 0.8.
 
 ## 1.1 Conditional Probability
 >Which of the probabilities in the above description is/are conditional?
 
+The probability of a hydrogen aircraft being Economicalal in 5 years is conditional because it is dependent on whether the electrolysis efficiency (80% or 90%) of the hydrogen aircraft.
+
 ## 1.2 Probability Tree
->Draw a probability tree for the situation above (showing probabilities of electrolysis efficiency and an economical hydrogen aircraft in 5 years).
+>Draw a probability tree for the situation above (showing probabilities of electrolysis efficiency and an Economicalal hydrogen aircraft in 5 years).
+
+```{r, echo=TRUE}
+tree <- Node$new("Hydrogen Aircraft") # Initializing the probability tree by creating a new node
+# Adding the different branches of the probability tree and their description
+  
+efficient_80_percent <- 
+  tree$AddChild("80% Efficient Aircraft")
+Economical_5_years <- 
+  efficient_80_percent$AddChild("Economical in 5 Years")
+efficient_80_percent_and_Economical_5_years <- 
+  Economical_5_years$AddChild("80% Efficient Aircraft and Economical in 5 Years")
+not_Economical_5_years <- 
+  efficient_80_percent$AddChild("Not Economical in 5 Years")
+efficient_80_percent_and_not_Economical_5_years <- 
+  not_Economical_5_years$AddChild("80% Efficient Aircraft and Not Economical in 5 Years")
+efficient_90_percent <- 
+  tree$AddChild("90% Efficient Aircraft")
+Economical_5_years <- 
+  efficient_90_percent$AddChild("Economical in 5 Years")
+efficient_90_percent_and_Economical_5_years <- 
+  Economical_5_years$AddChild("90% Efficient Aircraft and Economical in 5 Years")
+not_Economical_5_years <- 
+  efficient_90_percent$AddChild("Not Economical in 5 Years")
+efficient_90_percent_and_not_Economical_5_years <- 
+  not_Economical_5_years$AddChild("90% Efficient Aircraft and Not Economical in 5 Years")
+
+# Adding the probabilities of the branches in the tree
+tree$`80% Efficient Aircraft`$p <- 0.3
+tree$`80% Efficient Aircraft`$`Economical in 5 Years`$p <- 0.6
+tree$`80% Efficient Aircraft`$`Economical in 5 Years`$`80% Efficient Aircraft and Economical in 5 Years`$p <- 
+  tree$`80% Efficient Aircraft`$p * 
+  tree$`80% Efficient Aircraft`$`Economical in 5 Years`$p # Joint probability
+tree$`80% Efficient Aircraft`$`Not Economical in 5 Years`$p <- 0.4
+tree$`80% Efficient Aircraft`$`Not Economical in 5 Years`$`80% Efficient Aircraft and Not Economical in 5 Years`$p <- 
+  tree$`80% Efficient Aircraft`$p * 
+  tree$`80% Efficient Aircraft`$`Not Economical in 5 Years`$p # Joint probability
+tree$`90% Efficient Aircraft`$p <- 0.7
+tree$`90% Efficient Aircraft`$`Economical in 5 Years`$p <- 0.8
+tree$`90% Efficient Aircraft`$`Economical in 5 Years`$`90% Efficient Aircraft and Economical in 5 Years`$p <- 
+  tree$`90% Efficient Aircraft`$p * 
+  tree$`90% Efficient Aircraft`$`Economical in 5 Years`$p # Joint probability
+tree$`90% Efficient Aircraft`$`Not Economical in 5 Years`$p <- 0.2
+tree$`90% Efficient Aircraft`$`Not Economical in 5 Years`$`90% Efficient Aircraft and Not Economical in 5 Years`$p <- 
+  tree$`90% Efficient Aircraft`$p * 
+  tree$`90% Efficient Aircraft`$`Not Economical in 5 Years`$p # Joint probability
+
+print(tree, "p")
+```
 
 ## 1.3 Joint Probabilities
->What is the probability that an economical hydrogen aircraft will be developed in 5 years? If an economical hydrogen aircraft is developed in 5 years, research into electric aircraft will be cut back so that the probability of an economical electric aircraft being developed in 7 years is 0.5. If an economical hydrogen aircraft is not developed in 5 years, the probability of an economical electric aircraft being developed in 7 years is 0.9. 
+>What is the probability that an Economicalal hydrogen aircraft will be developed in 5 years? If an Economicalal hydrogen aircraft is developed in 5 years, research into electric aircraft will be cut back so that the probability of an Economicalal electric aircraft being developed in 7 years is 0.5. If an Economicalal hydrogen aircraft is not developed in 5 years, the probability of an Economicalal electric aircraft being developed in 7 years is 0.9. 
+
+```{r, echo=TRUE}
+p_economic_5_years <- 
+  tree$`80% Efficient Aircraft`$`Economic in 5 Years`$`80% Efficient Aircraft and Economic in 5 Years`$p + 
+  tree$`90% Efficient Aircraft`$`Economic in 5 Years`$`90% Efficient Aircraft and Economic in 5 Years`$p 
+  # Probability that an economical hydrogen aircraft will be developed in 5 years
+p_economic_5_years
+```
 
 ## 1.4 Extended Probability Tree
->Extend the probability tree from 1.3 to also include probabilities of an economical electric aircraft in 7 years.
+>Extend the probability tree from 1.3 to also include probabilities of an Economicalal electric aircraft in 7 years.
+
+```{r, echo=TRUE}
+tree_new <- Node$new("Hydrogen Aircraft") # Initializing another probability tree by creating a new node
+# Adding the different branches of the probability tree and their description
+  efficient_80_percent <- tree_new$AddChild("80% Efficient Aircraft")
+    economic_5_years <- efficient_80_percent$AddChild("Economical in 5 Years (Hydrogen)")
+      economic_7_years <- economic_5_years$AddChild("Economical in 7 Years (Electric)")
+        efficient_80_percent_and_economic_5_years_and_economic_7_years <- economic_7_years$AddChild("80% Efficient Aircraft and Economical in 5 and 7 Years; Hydrogen, Electric")
+      not_economic_7_years <- economic_5_years$AddChild("Not Economical in 7 Years (Electric)")
+        efficient_80_percent_and_economic_5_years_and_not_economic_7_years <- not_economic_7_years$AddChild("80% Efficient Aircraft and Economical in 5 but not 7 years; Hydrogen, Electric")
+    not_economic_5_years <- efficient_80_percent$AddChild("Not Economical in 5 Years (Hydrogen)")
+      economic_7_years <- not_economic_5_years$AddChild("Economical in 7 Years (Electric)")
+        efficient_80_percent_and_not_economic_5_years_and_economic_7_years <- economic_7_years$AddChild("80% efficient aircraft and not economical in 5 but in 7 years; Hydrogen, Electric")
+      not_economic_7_years <- not_economic_5_years$AddChild("Not Economical in 7 Years (Electric)")
+        efficient_80_percent_and_not_economic_5_years_and_not_economic_7_years <- not_economic_7_years$AddChild("80% efficient Aicraft and not economical in 5 nor 7 years; Hydrogen, Electric")
+  efficient_90_percent <- tree_new$AddChild("90% Efficient Aircraft")
+    economic_5_years <- efficient_90_percent$AddChild("Economical in 5 Years (Hydrogen)")
+      economic_7_years <- economic_5_years$AddChild("Economical in 7 Years (Electric)")
+        efficient_90_percent_and_economic_5_years_and_economic_7_years <- economic_7_years$AddChild("90% Efficient Aircraft and economical in 5 and 7 years; Hydrogen, Electric")
+      not_economic_7_years <- economic_5_years$AddChild("Not Economical in 7 Years (Electric)")
+        efficient_90_percent_and_economic_5_years_and_not_economic_7_years <- not_economic_7_years$AddChild("90% Efficient Aircraft and economical in 5 but not 7 years; Hydrogen, Electric")
+    not_economic_5_years <- efficient_90_percent$AddChild("Not Economical in 5 Years (Hydrogen)")
+      economic_7_years <- not_economic_5_years$AddChild("Economical in 7 Years (Electric)")
+        efficient_90_percent_and_not_economic_5_years_and__economic_7_years <- economic_7_years$AddChild("90% Efficient Aircraft and not economical in 5 but in 7 years; Hydrogen, Electric")
+      not_economic_7_years <- not_economic_5_years$AddChild("Not Economical in 7 years (Electric)")
+        efficient_90_percent_and_not_economic_5_years_and_not_economic_7_years <- not_economic_7_years$AddChild("90% efficient Aicraft and not economical in 5 nor 7 years; Hydrogen, Electric")
+
+# Adding the probabilities of the tree's branches and calculating the joint probabilities
+tree_new$`80% Efficient Aircraft`$p <- 0.3
+  tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$p <- 0.6
+    tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p <- 0.5
+      tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`80% Efficient Aircraft and Economical in 5 and 7 Years; Hydrogen, Electric`$p <- tree_new$`80% Efficient Aircraft`$p * tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$p * tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p
+    tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$p <- 0.5
+      tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$`80% Efficient Aircraft and Economical in 5 but not 7 years; Hydrogen, Electric`$p <- tree_new$`80% Efficient Aircraft`$p * tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$p * tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$p
+  tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$p <- 0.4
+    tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p <- 0.1
+      tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`80% efficient aircraft and not economical in 5 but in 7 years; Hydrogen, Electric`$p <- tree_new$`80% Efficient Aircraft`$p * tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$p * tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p
+    tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$p <- 0.9
+      tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$`80% efficient Aicraft and not economical in 5 nor 7 years; Hydrogen, Electric`$p <- tree_new$`80% Efficient Aircraft`$p * tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$p * tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$p
+tree_new$`90% Efficient Aircraft`$p <- 0.7
+  tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$p <- 0.8
+    tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p <- 0.5
+      tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`90% Efficient Aircraft and economical in 5 and 7 years; Hydrogen, Electric`$p <- tree_new$`90% Efficient Aircraft`$p * tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$p * tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p
+    tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$p <- 0.5
+      tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$`90% Efficient Aircraft and economical in 5 but not 7 years; Hydrogen, Electric`$p <- tree_new$`90% Efficient Aircraft`$p * tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$p * tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$p
+  tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$p <- 0.2
+    tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p <- 0.1
+      tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`90% Efficient Aircraft and not economical in 5 but in 7 years; Hydrogen, Electric`$p <- tree_new$`90% Efficient Aircraft`$p * tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$p * tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$p      
+    tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Not Economical in 7 years (Electric)`$p <- 0.9
+      tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Not Economical in 7 Years (Electric)`$`90% efficient Aircraft and not economical in 5 nor in 7 years; Hydrogen, Electric`$p <- tree_new$`90% Efficient Aircraft`$p * tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$p * tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Not Economical in 7 years (Electric)`$p      
+
+print(tree_new, "p")
+```
 
 ## 1.5 Bayes' Theorem
->What is the probability that an economical electric aircraft will be developed in 7 years?
+>What is the probability that an Economicalal electric aircraft will be developed in 7 years?
+
+```{r, echo=TRUE}
+p_economic_electric_7_years <- 
+  tree_new$`80% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`80% Efficient Aircraft and Economical in 5 and 7 Years; Hydrogen, Electric`$p + 
+  tree_new$`80% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`80% efficient aircraft and not economical in 5 but in 7 years; Hydrogen, Electric`$p + 
+  tree_new$`90% Efficient Aircraft`$`Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`90% Efficient Aircraft and economical in 5 and 7 years; Hydrogen, Electric`$p + 
+  tree_new$`90% Efficient Aircraft`$`Not Economical in 5 Years (Hydrogen)`$`Economical in 7 Years (Electric)`$`90% Efficient Aircraft and not economical in 5 but in 7 years; Hydrogen, Electric`$p 
+# Calculating the probability that an economical electric aircraft will be developed in 7 years
+
+revised_p_economic_7_years <- p_economic_electric_7_years / p_economic_5_years 
+# Calculating the revised probability that an economical electric aircraft will be developed in 7 years
+revised_p_economic_7_years
+```
 
 # 2. Bank Charges
 For one type of bank account, a bank allows 4 transactions per month for free and charges 1 dollar per transaction for the 5th and subsequent transactions. (E.g. if I make 7 transactions I will pay (7-4)*1 = $3.) The number of transactions I make each month has a mean of 4 and a variance of 2.4 and follows a Binomial distribution. I need to estimate how much I expect to pay each month in bank charges.
@@ -31,11 +160,75 @@ For one type of bank account, a bank allows 4 transactions per month for free an
 ## 2.1 Finding p and n
 >Calculate the probability, p, and the number, n, that define the Binomial distribution of the number of transactions each month. [Hint: Use the formulas for the mean and variance of the Binomial Distribution. Mean = np, Variance = np(1-p) = Mean*(1-p).]
 
+$$
+\mu =4 \\ 
+\sigma^2 = 2.4
+$$
+
+__Step 1:__ Finding $p$ using the variance formula:
+
+$$
+\sigma^2 = n\cdot p \cdot q \\
+\sigma^2 = 2.4 \\
+n \cdot p \cdot q =2.4 \\
+\mu \cdot q = 2.4 \\
+4 \cdot q = 2.4 \\
+\frac{4 \cdot q}{4} = \frac{2.4}{4} \\
+q = 0.6 \\ \\
+p + q = 1 \\
+p + 0.6 = 1 \\
+p = 1 - 0.6 \\
+p = 0.4
+$$
+
+__Step 2:__ Finding $n$ using median formula
+
+$$
+n \cdot p = \mu \\
+n \cdot p = 4 \\
+n \cdot 0.4 \ 4 \\
+\frac{n \cdot 0.4}{0.4} = \frac{4}{0.4} \\
+n = 10 \\
+$$
+
+The probability, *p*, and the number, *n*, that define the Binomial distribution of the number of transactions each month are $p = 0.4 \text{ and } n = 10$.
+
 ## 2.2 Binomial Distribution
 >Calculate the probabilities of making 5, 6, 7, … transactions in a month.
 
+Let *X* = the number of transactions in a month, *C* = Charge per transaction (in $).
+```{r, echo=TRUE}
+p_x_5 <- dbinom(5,10,0.4) # P(X=5)
+p_x_6 <- dbinom(6,10,0.4) # P(X=6)
+p_x_7 <- dbinom(7,10,0.4) # P(X=7)
+p_x_8 <- dbinom(8,10,0.4) # P(X=8)
+p_x_9 <- dbinom(9,10,0.4) # P(X=9)
+p_x_10 <- dbinom(10,10,0.4) # P(X=10)
+
+# Creating a dataframe to summarize the probability data from above
+binomial_prob_summary <- data.frame(X = 5:10,
+                                    C = 1:6,
+                                    "P(x)" = c(p_x_5,p_x_6,p_x_7,p_x_8,p_x_9,p_x_10)) 
+binomial_prob_summary
+```
+
 ## 2.3 Expected Value of Binomial Distribution
 >Calculate the expected total bank charges for one month.
+
+```{r, echo=TRUE}
+binomial_prob_summary <- 
+  binomial_prob_summary %>% 
+  mutate("E(x)"=binomial_prob_summary$P.x. * binomial_prob_summary$C) 
+# Mutating the dataframe with pipe operator to add new column for expected charge per transaction
+binomial_prob_summary
+
+expected_total_charges <- 
+  sum(binomial_prob_summary$`E(x)`) 
+# Calculating the expected total charges by summing the individual expected charges of each level of transaction
+expected_total_charges
+```
+
+The expected total bank charges for one month are 0.6020, so we can expect to pay $0.6020 per transaction a month.
 
 # 3. Letter Carriers
 A Canada Post letter carrier delivers mail to houses on a street. The number of mail items to be delivered to an individual house follows a Poisson distribution with mean = 1.3 and is independent from one house to another. The time taken to walk past a house for which there are no items requiring delivery is 15 seconds. The time taken to deliver items to a house is 15 seconds (plus the 15 seconds to walk past) independent of the number of items requiring delivery. When deciding how many houses to assign to a letter carrier, we need to estimate how much uncertainty there is in the time required to deliver mail to a lot of houses, in relation to the expected time required.
@@ -43,14 +236,64 @@ A Canada Post letter carrier delivers mail to houses on a street. The number of 
 ## 3.1 Poisson Distribution (1)
 >For a given house, what is the probability that there are no items requiring delivery?
 
+```{r, echo=TRUE}
+p_x_0 <- dpois(0,1.3) # P(X=0)
+p_x_0
+```
 ## 3.2 Poisson Distribution (2)
 >What is the expected time taken by the letter carrier for a single house?
+
+```{r, echo=TRUE}
+p_x_1 <- dpois(1,1.3) # P(X=1)
+expected_time_1_house <- 15 * p_x_0 + 30 * p_x_1 # Formula from laws of expectated values
+expected_time_1_house
+```
 
 ## 3.3 Coefficient of Variation for 1 House
 >What is the coefficient of variation of the time taken by the letter carrier for a single house?
 
+```{r, echo=TRUE}
+variance_1_house <- 
+  ((15 - expected_time_1_house)^2 * p_x_0^2) + ((30 - expected_time_1_house)^2 * p_x_1^2) 
+# Law of V(X) formula, multiplying by constants
+
+sd_1_house <- sqrt(variance_1_house) # Standard deviation
+
+coeff_of_var_1_house <- sd_1_house / expected_time_1_house # Coefficient of variation
+coeff_of_var_1_house
+```
+
 ## 3.4 Expected Value of Poisson Distribution
 >What is the expected time taken by the letter carrier for a street of 100 houses?
 
+```{r, echo=TRUE}
+probabilities_100_houses <- 
+  data.frame(X = 0:100) # Creating the dataframe
+probabilities_100_houses <- 
+  probabilities_100_houses %>% mutate(t = c(probabilities_100_houses$X * 30)) 
+  # Creating the column for time taken for number of houses requiring delivery
+probabilities_100_houses[1,2] <- 
+  15 # t = 0 does not follow the same rule as the other entries so it is manually adjusted
+probabilities_100_houses <- 
+  probabilities_100_houses %>% mutate("P(t)" = c(dpois(probabilities_100_houses$X,1.3))) 
+  # Calculating the probability for each row using Poisson distribution with pipe operator and mutate()
+probabilities_100_houses <- 
+  probabilities_100_houses %>% mutate("E(t)" = c(probabilities_100_houses$`P(t)` * probabilities_100_houses$t)) 
+  # Calculating the expected time take for each number of houses
+
+expected_time_100_houses <- sum(probabilities_100_houses$`E(t)`) # Calculating the total expected time
+expected_time_100_houses
+```
+
 ## 3.5 Coefficient of Variation for 100 Houses 
 >What is the coefficient of variation of the time taken by the letter carrier for a street of 100 houses?
+
+```{r, echo=TRUE}
+variance_100_houses <- 
+  sum((probabilities_100_houses$t - probabilities_100_houses$`E(t)`)^2 * probabilities_100_houses$`P(t)`^2) 
+  # calculating the variance of 100 houses
+sd_100_houses <- sqrt(variance_100_houses) # Calculating the standard deviation
+
+coeff_of_var_100_houses <- sd_100_houses / expected_time_100_houses # Coefficient of variation of 100 houses
+coeff_of_var_100_houses
+```

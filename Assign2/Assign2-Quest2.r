@@ -9,9 +9,10 @@ p_x_8 <- dbinom(8,10,0.4) # P(X=8)
 p_x_9 <- dbinom(9,10,0.4) # P(X=9)
 p_x_10 <- dbinom(10,10,0.4) # P(X=10)
 
+# Creating a dataframe to summarize the probability data from above
 binomial_prob_summary <- data.frame(X = 5:10,
                                     C = 1:6,
-                                    "P(x)" = c(p_x_5,p_x_6,p_x_7,p_x_8,p_x_9,p_x_10)) # Creating a dataframe to summarize the probability data from above
+                                    "P(x)" = c(p_x_5,p_x_6,p_x_7,p_x_8,p_x_9,p_x_10)) 
 
 # 2.3 Expected Value of Binomial Distribution
 library(dplyr) # Loading required package
