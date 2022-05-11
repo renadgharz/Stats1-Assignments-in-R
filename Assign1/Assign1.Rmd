@@ -180,9 +180,7 @@ prob_Bc_given_A
 ```
 
 # 3. Flight Delays
-Below we give two contingency tables of data from reports submitted by airlines to the U.S.
-Department of Transportation. The data concern the numbers of on-time and delayed flights
-for Delta and Frontier Airlines at five major airports.
+Below we give two contingency tables of data from reports submitted by airlines to the U.S. Department of Transportation. The data concern the numbers of on-time and delayed flights for Delta and Frontier Airlines at five major airports.
 
 __Delta Airlines__
 
