@@ -1,6 +1,7 @@
 ---
 title: "ADM 2303 - Assignment 3"
 author: "Renad Gharz"
+date: "06/05/2022"
 output: pdf_document
 ---
 
