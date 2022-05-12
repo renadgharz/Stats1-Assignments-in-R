@@ -5,7 +5,7 @@ date: "02/05/2022"
 output: pdf_document
 ---
 ```{r, echo=FALSE}
-load(file = '.RData')
+load(file = '../.RData')
 library(RColorBrewer)
 library(dplyr)
 ```
