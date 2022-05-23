@@ -161,34 +161,66 @@ For one type of bank account, a bank allows 4 transactions per month for free an
 >Calculate the probability, p, and the number, n, that define the Binomial distribution of the number of transactions each month. [Hint: Use the formulas for the mean and variance of the Binomial Distribution. Mean = np, Variance = np(1-p) = Mean*(1-p).]
 
 $$
-\mu =4 \\ 
+\mu =4
+$$
+$$
 \sigma^2 = 2.4
 $$
 
 __Step 1:__ Finding $p$ using the variance formula:
 
 $$
-\sigma^2 = n\cdot p \cdot q \\
-\sigma^2 = 2.4 \\
-n \cdot p \cdot q =2.4 \\
-\mu \cdot q = 2.4 \\
-4 \cdot q = 2.4 \\
-\frac{4 \cdot q}{4} = \frac{2.4}{4} \\
-q = 0.6 \\ \\
-p + q = 1 \\
-p + 0.6 = 1 \\
-p = 1 - 0.6 \\
+\sigma^2 = n\cdot p \cdot q
+$$
+$$
+\sigma^2 = 2.4
+$$
+$$
+n \cdot p \cdot q =2.4
+$$
+$$
+\mu \cdot q = 2.4
+$$
+$$
+4 \cdot q = 2.4
+$$
+$$
+\frac{4 \cdot q}{4} = \frac{2.4}{4}
+$$
+$$
+q = 0.6
+$$
+
+
+$$
+p + q = 1
+$$
+$$
+p + 0.6 = 1
+$$
+$$
+p = 1 - 0.6
+$$
+$$
 p = 0.4
 $$
 
 __Step 2:__ Finding $n$ using median formula
 
 $$
-n \cdot p = \mu \\
-n \cdot p = 4 \\
-n \cdot 0.4 \ 4 \\
-\frac{n \cdot 0.4}{0.4} = \frac{4}{0.4} \\
-n = 10 \\
+n \cdot p = \mu
+$$
+$$
+n \cdot p = 4
+$$
+$$
+n \cdot 0.4 \ 4
+$$
+$$
+\frac{n \cdot 0.4}{0.4} = \frac{4}{0.4}
+$$
+$$
+n = 10
 $$
 
 The probability, *p*, and the number, *n*, that define the Binomial distribution of the number of transactions each month are $p = 0.4 \text{ and } n = 10$.

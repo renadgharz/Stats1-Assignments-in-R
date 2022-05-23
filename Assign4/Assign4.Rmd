@@ -138,12 +138,15 @@ A marketing manager of a car rental company wants to analyze the proportion of c
 First we verify that the success/failure condition is satisfied.
 
 $$
-np = 500\cdot 0.68 =340 \\
+np = 500\cdot 0.68 =340 
+$$
+$$
 np \ge 10 \rightarrow 340 \ge 10
 $$
-
 $$
-nq = 500 \cdot(1-0.68) = 500 \cdot 0.32 = 160 \\
+nq = 500 \cdot(1-0.68) = 500 \cdot 0.32 = 160 
+$$
+$$
 nq \ge 10 \rightarrow 160 \ge 10
 $$
 
